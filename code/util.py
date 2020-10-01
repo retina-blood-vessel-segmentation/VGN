@@ -225,6 +225,13 @@ def _get_image_fov_blob(minibatch_db, is_training, use_padding=False):
         pixel_mean = cfg.PIXEL_MEAN_HRF
         len_y = 768
         len_x = 768
+    elif 'DROPS' in minibatch_db[0]:
+        im_ext = '.jpg'
+        label_ext = '_label.png'
+        fov_ext = '_mask.png'
+        pixel_mean = cfg.PIXEL_MEAN_DROPS
+        len_y = 480
+        len_x = 640
         
     for i in xrange(num_images):
         im = skimage.io.imread(minibatch_db[i]+im_ext)
@@ -324,6 +331,15 @@ def _get_graph_fov_blob(minibatch_db, is_training, edge_type='srns_geo_dist_bina
         pixel_mean = cfg.PIXEL_MEAN_HRF
         len_y = 768
         len_x = 768
+    elif 'DROPS' in minibatch_db[0]:
+        im_root_path = '../data/DROPS'
+        im_ext = '.jpg'
+        label_ext = '_label.png'
+        fov_ext = '_mask.png'
+        pixel_mean = cfg.PIXEL_MEAN_DROPS
+        len_y = 480
+        len_x = 640
+
     for i in xrange(num_graphs):
         
         # load images

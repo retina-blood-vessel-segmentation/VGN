@@ -32,13 +32,15 @@ __C.TRAIN.GRAPH_BATCH_SIZE = 1 # for VGN
 
 ##### Training (paths) #####
 
-__C.TRAIN.DRIVE_SET_TXT_PATH = '../DRIVE/train.txt'
+__C.TRAIN.DRIVE_SET_TXT_PATH = '../data/DRIVE/train.txt'
 
-__C.TRAIN.STARE_SET_TXT_PATH = '../STARE/train.txt'
+__C.TRAIN.STARE_SET_TXT_PATH = '../data/STARE/train.txt'
 
-__C.TRAIN.CHASE_DB1_SET_TXT_PATH = '../CHASE_DB1/train.txt'
+__C.TRAIN.CHASE_DB1_SET_TXT_PATH = '../data/CHASE_DB1/train.txt'
 
-__C.TRAIN.HRF_SET_TXT_PATH = '../HRF/train_768.txt'
+__C.TRAIN.HRF_SET_TXT_PATH = '../data/HRF/train_768.txt'
+
+__C.TRAIN.DROPS_SET_TXT_PATH = '../data/DROPS/train.txt'
 
 __C.TRAIN.TEMP_GRAPH_SAVE_PATH = 'graph'
 
@@ -79,14 +81,16 @@ __C.TEST = edict()
 
 ##### Test (paths) #####
 
-__C.TEST.DRIVE_SET_TXT_PATH = '../DRIVE/test.txt'
+__C.TEST.DRIVE_SET_TXT_PATH = '../data/DRIVE/test.txt'
 
-__C.TEST.STARE_SET_TXT_PATH = '../STARE/test.txt'
+__C.TEST.STARE_SET_TXT_PATH = '../data/STARE/test.txt'
 
-__C.TEST.CHASE_DB1_SET_TXT_PATH = '../CHASE_DB1/test.txt'
+__C.TEST.CHASE_DB1_SET_TXT_PATH = '../data/CHASE_DB1/test.txt'
 
-__C.TEST.HRF_SET_TXT_PATH = '../HRF/test_768.txt'
+__C.TEST.HRF_SET_TXT_PATH = '../data/HRF/test_768.txt'
 #__C.TEST.HRF_SET_TXT_PATH = '../HRF/test_fr.txt'
+
+__C.TEST.DROPS_SET_TXT_PATH = '../data/DROPS/test.txt'
 
 __C.TEST.RES_SAVE_PATH = 'test'
 
@@ -104,6 +108,8 @@ __C.PIXEL_MEAN_STARE = [150.296, 83.550, 27.501]
 __C.PIXEL_MEAN_CHASE_DB1 = [113.953, 39.807, 6.880]
 
 __C.PIXEL_MEAN_HRF = [164.420, 51.826, 27.130]
+
+__C.PIXEL_MEAN_DROPS = [163.309, 93.314, 50.984]
 
 __C.EPSILON = 1e-03
 

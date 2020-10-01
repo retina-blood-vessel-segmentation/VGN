@@ -162,6 +162,12 @@ if __name__ == '__main__':
         test_set_txt_path = cfg.TEST.CHASE_DB1_SET_TXT_PATH
         im_ext = '.jpg'
         label_ext = '_1stHO.png'
+    elif args.dataset=='DROPS':
+        im_root_path = '../data/DROPS/'
+        test_set_txt_path = cfg.TEST.DROPS_SET_TXT_PATH
+        im_ext = '.jpg'
+        label_ext = '_label.png'
+
         
     if args.use_multiprocessing:    
         pool = multiprocessing.Pool(processes=args.multiprocessing_num_proc)
@@ -322,7 +328,7 @@ if __name__ == '__main__':
         res_prob_map = res_prob_map.reshape((res_prob_map.shape[1], res_prob_map.shape[2]))
         
         # compute the current AP
-        if args.dataset=='DRIVE':
+        if args.dataset=='DRIVE' or args.dataset=='DROPS':
             cur_label = res_list[img_idx]['label']
             cur_label = np.squeeze(cur_label)
             cur_mask = res_list[img_idx]['mask']

@@ -31,7 +31,7 @@ def parse_args():
 
 
 def load(data_path, session, ignore_missing=False):
-    data_dict = np.load(data_path).item()
+    data_dict = np.load(data_path, allow_pickle=True).item()
     for key in data_dict:
         with tf.variable_scope(key, reuse=True):
             for subkey in data_dict[key]:
@@ -68,6 +68,9 @@ if __name__ == '__main__':
     elif args.dataset=='HRF':
         train_set_txt_path = cfg.TRAIN.HRF_SET_TXT_PATH
         test_set_txt_path = cfg.TEST.HRF_SET_TXT_PATH
+    elif args.dataset=='DROPS':
+        train_set_txt_path = cfg.TRAIN.DROPS_SET_TXT_PATH
+        test_set_txt_path = cfg.TEST.DROPS_SET_TXT_PATH
 
     with open(train_set_txt_path) as f:
         train_img_names = [x.strip() for x in f.readlines()]

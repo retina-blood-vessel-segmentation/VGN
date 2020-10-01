@@ -215,6 +215,10 @@ if __name__ == '__main__':
         im_root_path = '../HRF/all_768' 
         train_set_txt_path = cfg.TRAIN.HRF_SET_TXT_PATH
         test_set_txt_path = cfg.TEST.HRF_SET_TXT_PATH
+    elif args.dataset=='DROPS':
+        im_root_path = '../data/DROPS/'
+        train_set_txt_path = cfg.TRAIN.DROPS_SET_TXT_PATH
+        test_set_txt_path = cfg.TEST.DROPS_SET_TXT_PATH
     
     if args.use_multiprocessing:    
         pool = multiprocessing.Pool(processes=args.multiprocessing_num_proc)

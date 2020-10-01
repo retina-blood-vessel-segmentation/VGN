@@ -71,6 +71,11 @@ def generate_graph_using_srns((img_name, im_root_path, cnn_result_root_path, par
         label_ext = '.tif'
         len_y = 768
         len_x = 768
+    elif 'DROPS' in img_name:
+        im_ext = '.jpg'
+        label_ext = '_label.png'
+        len_y = 480
+        len_x = 640
     
     cur_filename = img_name[util.find(img_name,'/')[-1]+1:]
     print 'processing '+cur_filename
@@ -203,25 +208,30 @@ if __name__ == '__main__':
     print(args)
     
     if args.dataset=='DRIVE':
-        train_set_txt_path = '../../DRIVE/train.txt'
-        test_set_txt_path = '../../DRIVE/test.txt'
-        im_root_path = '../../DRIVE/all'
+        train_set_txt_path = '../../data/DRIVE/train.txt'
+        test_set_txt_path = '../../data/DRIVE/test.txt'
+        im_root_path = '../../data/DRIVE/all'
         cnn_result_root_path = '../new_exp/DRIVE_cnn/test'
     elif args.dataset=='STARE':
-        train_set_txt_path = '../../STARE/train.txt'
-        test_set_txt_path = '../../STARE/test.txt'
-        im_root_path = '../../STARE/all'
+        train_set_txt_path = '../../data/STARE/train.txt'
+        test_set_txt_path = '../../data/STARE/test.txt'
+        im_root_path = '../../data/STARE/all'
         cnn_result_root_path = '../STARE_cnn/res_resized'
     elif args.dataset=='CHASE_DB1':
-        train_set_txt_path = '../../CHASE_DB1/train.txt'
-        test_set_txt_path = '../../CHASE_DB1/test.txt'
-        im_root_path = '../../CHASE_DB1/all'
+        train_set_txt_path = '../../data/CHASE_DB1/train.txt'
+        test_set_txt_path = '../../data/CHASE_DB1/test.txt'
+        im_root_path = '../../data/CHASE_DB1/all'
         cnn_result_root_path = '../CHASE_cnn/test_resized_graph_gen'
     elif args.dataset=='HRF':
-        train_set_txt_path = '../../HRF/train_768.txt'
-        test_set_txt_path = '../../HRF/test_768.txt'
-        im_root_path = '../../HRF/all_768'
-        cnn_result_root_path = '../HRF_cnn/test' 
+        train_set_txt_path = '../../data/HRF/train_768.txt'
+        test_set_txt_path = '../../data/HRF/test_768.txt'
+        im_root_path = '../../data/HRF/all_768'
+        cnn_result_root_path = '../HRF_cnn/test'
+    elif args.dataset=='DROPS':
+        train_set_txt_path = '../../data/DROPS/train.txt'
+        test_set_txt_path = '../../data/DROPS/test.txt'
+        im_root_path = '../../data/DROPS/'
+        cnn_result_root_path = '../DRIU_DROPS/test'
     
     with open(train_set_txt_path) as f:
         train_img_names = [x.strip() for x in f.readlines()]

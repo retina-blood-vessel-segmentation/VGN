@@ -47,6 +47,9 @@ if __name__ == '__main__':
     elif args.dataset=='CHASE_DB1':
         train_set_txt_path = cfg.TRAIN.CHASE_DB1_SET_TXT_PATH
         test_set_txt_path = cfg.TEST.CHASE_DB1_SET_TXT_PATH
+    elif args.dataset=='DROPS':
+        train_set_txt_path = cfg.TRAIN.DROPS_SET_TXT_PATH
+        test_set_txt_path = cfg.TEST.DROPS_SET_TXT_PATH
     
     with open(train_set_txt_path) as f:
         train_img_names = [x.strip() for x in f.readlines()]
@@ -178,9 +181,11 @@ if __name__ == '__main__':
         cur_batch_size = len(img_list)
         reshaped_fg_prob_map = fg_prob_map.reshape((cur_batch_size,fg_prob_map.shape[1],fg_prob_map.shape[2]))
         
-        if args.dataset=='DRIVE':
+        if args.dataset=='DRIVE' or args.dataset=='DROPS':
             if args.dataset=='DRIVE':
                 mask = np.concatenate(map(lambda x: np.expand_dims(skimage.io.imread(x+'_mask.gif'), axis=0), img_list), axis=0)
+            elif args.dataset=='DROPS':
+                mask = np.concatenate(map(lambda x: np.expand_dims(skimage.io.imread(x + '_mask.png'), axis=0), img_list), axis=0)
             else:
                 mask = np.concatenate(map(lambda x: np.expand_dims(skimage.io.imread(x+'_mask.tif'), axis=0), img_list), axis=0)
 

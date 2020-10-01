@@ -6,6 +6,7 @@
 # ALL : [ 136.00693286   74.69702627   35.98020038] # DRIVE+STARE
 # CHASE_DB1 : [ 113.95299712  39.80676852   6.88010585]
 # HRF : [164.41978937  51.82606062  27.12979025]
+# DROPS: [163.30941976  93.31453678  50.984493  ] on 25.09.2020. (drops counted 20 images in total)
 
 
 import os
@@ -15,7 +16,7 @@ import skimage.io
 from config import cfg
 
 
-DATASET='HRF'
+DATASET='DROPS'
 
 
 if DATASET=='DRIVE':
@@ -117,4 +118,20 @@ elif DATASET=='ALL':
         cum_num_pixels += np.cumprod(np.shape(cur_img))[1]
 
     mean_rgb_val = rgb_cum_sum/cum_num_pixels    
+    print mean_rgb_val
+
+elif DATASET=='DROPS':
+    
+    dataset_root_path = '/home/crvenpaka/ftn/Oftalmologija/segmentacija-mreze/VGN/data/DROPS/all'
+    train_img_names = sorted(os.listdir(os.path.join(dataset_root_path, 'images')))
+    # train_img_names = map(lambda x: x[:-5], train_img_names[:10])
+    rgb_cum_sum = np.zeros((3,))
+    cum_num_pixels = 0.
+    for cur_img_name in train_img_names:
+        cur_img = skimage.io.imread(os.path.join(dataset_root_path,'images',cur_img_name))
+        cur_rgb_sum = np.sum(cur_img, axis=(0,1))
+        rgb_cum_sum = rgb_cum_sum + cur_rgb_sum
+        cum_num_pixels += np.cumprod(np.shape(cur_img))[1]
+
+    mean_rgb_val = rgb_cum_sum/cum_num_pixels
     print mean_rgb_val
